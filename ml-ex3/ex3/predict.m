@@ -20,11 +20,14 @@ p = zeros(size(X, 1), 1);
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
 %
-
-
-
-
-
+% theta1 has size 25 x 401
+% theta2 has size 10 x 26
+% X has size 5000 x 400
+X = [ones(size(X,1),1) X];
+hiddenLayer = sigmoid(X*Theta1');
+hiddenLayer = [ones(size(hiddenLayer,1),1) hiddenLayer];
+outputLayer = sigmoid(hiddenLayer*Theta2');
+[q,p] = max(outputLayer,[],2);
 
 
 
