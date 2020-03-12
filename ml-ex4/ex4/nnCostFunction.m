@@ -66,6 +66,7 @@ hiddenLayer = sigmoid(X*Theta1');
 hiddenLayer = [ones(size(hiddenLayer,1),1) hiddenLayer];
 outputLayer = sigmoid(hiddenLayer*Theta2');
 HT = outputLayer';
+size(HT)
 Ymat = zeros(num_labels,m);
 for i = 1:m
   Ymat(y(i),i) = 1;
