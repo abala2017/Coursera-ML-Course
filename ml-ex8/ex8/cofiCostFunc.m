@@ -40,6 +40,13 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+Yalt = Y  .* R;
+J = (1/2) * sum(sum(((R .* (X * Theta'))  -  Yalt).^2));
+JXreg = (lambda/2) * sum(sum(X.^2));
+JThetareg = (lambda/2) * sum(sum(Theta.^2));
+J = J + JXreg + JThetareg;
+X_grad = ((R .* (X * Theta')) -  Yalt) * Theta + lambda * X;
+Theta_grad = ((R .* (X * Theta'))-  Yalt)' * X + lambda * Theta;
 
 
 
